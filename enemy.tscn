@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://btxol316mhxga"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_2qof3"]
+[ext_resource type="Texture2D" uid="uid://dy4udl8i10j5b" path="res://zombie_standing.png" id="1_qmfw8"]
+[ext_resource type="Script" path="res://state_machine.gd" id="3_87a0n"]
+[ext_resource type="Script" path="res://idle.gd" id="4_ua2qn"]
+[ext_resource type="Script" path="res://random_timer.gd" id="5_k2ld5"]
+[ext_resource type="Script" path="res://wandering.gd" id="6_cc85e"]
+[ext_resource type="Script" path="res://chase.gd" id="7_mqequ"]
+[ext_resource type="Script" path="res://attack.gd" id="8_nlbi0"]
+[ext_resource type="Script" path="res://firing.gd" id="9_2uaq1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_js2xl"]
+radius = 13.0
+height = 46.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_2qof3")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_qmfw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_js2xl")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_87a0n")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_ua2qn")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+script = ExtResource("5_k2ld5")
+min_time = 3.0
+max_time = 6.0
+
+[node name="RotationTimer" type="Timer" parent="StateMachine/Idle"]
+script = ExtResource("5_k2ld5")
+min_time = 0.2
+max_time = 1.0
+
+[node name="Wandering" type="Node" parent="StateMachine"]
+script = ExtResource("6_cc85e")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("7_mqequ")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("8_nlbi0")
+
+[node name="Firing" type="Node" parent="StateMachine"]
+script = ExtResource("9_2uaq1")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -51.0
+offset_right = 20.0
+offset_bottom = -28.0
+
+[node name="VisionRayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+collide_with_areas = true
+
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Idle/RotationTimer" to="StateMachine/Idle" method="_on_rotation_timer_timeout"]

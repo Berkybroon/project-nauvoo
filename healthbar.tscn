@@ -1,0 +1,59 @@
+[gd_scene load_steps=14 format=3 uid="uid://c70ojr5xfct4h"]
+
+[ext_resource type="Texture2D" uid="uid://c8je55vhor75" path="res://sprites/healthbar/healthbar00.png" id="1_k0qtj"]
+[ext_resource type="Texture2D" uid="uid://c0a5qfte7l33k" path="res://sprites/healthbar/healthbar10.png" id="2_k4dwd"]
+[ext_resource type="Texture2D" uid="uid://c3dxrcmnuh21p" path="res://sprites/healthbar/healthbar20.png" id="3_tt8w7"]
+[ext_resource type="Texture2D" uid="uid://dlvmo7ammaxjd" path="res://sprites/healthbar/healthbar30.png" id="4_i5iou"]
+[ext_resource type="Texture2D" uid="uid://y6gjbwm08i8y" path="res://sprites/healthbar/healthbar40.png" id="5_ov6ym"]
+[ext_resource type="Texture2D" uid="uid://b71w0d27w0q6u" path="res://sprites/healthbar/healthbar50.png" id="6_2xmb4"]
+[ext_resource type="Texture2D" uid="uid://u16odrcm88ph" path="res://sprites/healthbar/healthbar60.png" id="7_ub5es"]
+[ext_resource type="Texture2D" uid="uid://crnlxhs0oliv5" path="res://sprites/healthbar/healthbar70.png" id="8_xkp0d"]
+[ext_resource type="Texture2D" uid="uid://dy6geth7rfc28" path="res://sprites/healthbar/healthbar80.png" id="9_qunxc"]
+[ext_resource type="Texture2D" uid="uid://d2injmthk8obr" path="res://sprites/healthbar/healthbar90.png" id="10_4e7la"]
+[ext_resource type="Texture2D" uid="uid://bjvj5sdbf2608" path="res://sprites/healthbar/healthbar100.png" id="11_jb850"]
+[ext_resource type="Script" path="res://healthbar.gd" id="12_1pnrw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrc1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k0qtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k4dwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tt8w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i5iou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ov6ym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2xmb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ub5es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xkp0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qunxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4e7la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jb850")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HealthBar" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_jrc1x")
+script = ExtResource("12_1pnrw")
