@@ -86,7 +86,7 @@ func generate_item_drops():
 	
 	# Put physics here - "push" the item in random direction when dropped
 	
-	get_tree().get_current_scene().add_child(healthpack_instance) # Spawn item
+	get_tree().get_current_scene().call_deferred("add_child", healthpack_instance)
 
 func remove_from_scene():
 	queue_free()

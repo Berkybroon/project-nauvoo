@@ -8,7 +8,7 @@ func _ready() -> void:
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta):
 	
 		# Lock position relative to the parent, but keep rotation at 0.
 	global_position = weapon_node.global_position + Vector2(100, 0)
@@ -28,7 +28,6 @@ func show_ammo():
 	if ammo >= 1:
 		frame = int(ammo_percentage * 5) + 1
 		reveal()
-
 
 # Hides the indicator from view after timer ends
 func _on_reveal_timer_timeout() -> void:

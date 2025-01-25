@@ -40,7 +40,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	for i in range(state.get_contact_count()):
 		var collider = state.get_contact_collider_object(i)
 		
-		# Automatic pickup & heal
+		# Automatic pickup & heal if player is missing health
 		if collider is Player:
 			if collider.health < collider.max_health:
 				collider.health += 50
