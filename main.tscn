@@ -793,6 +793,4 @@ rotation = 1.00978e-05
 scale = Vector2(2, 1.978)
 
 [node name="HealthPickup" parent="." instance=ExtResource("4_6nni5")]
-position = Vector2(987, 310)
-gravity_scale = 0.0
-linear_damp = 6.0
+position = Vector2(466, 166)

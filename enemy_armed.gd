@@ -1,4 +1,5 @@
 extends "res://enemy.gd"
+
 class_name EnemyArmed
 
 @export var bullet_scene: PackedScene

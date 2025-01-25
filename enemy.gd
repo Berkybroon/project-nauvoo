@@ -77,7 +77,20 @@ func take_damage(damage: int):
 func die():
 	print("gottem")
 	generate_item_drops()
-	queue_free()  # Remove the enemy from the scene
+	remove_from_scene()
 
 func generate_item_drops():
-	print("drop")
+	if healthpack_scene:
+			var healthpack_instance = healthpack_scene.instantiate()
+
+			# Position the bullet at the muzzle
+			var weapon_muzzle = get_node("WeaponSprite/PlayerMuzzle")
+			healthpack_instance.global_position = global_position
+
+			# Include physics here to "push" the item away from parent in random direction when "dropped"
+			
+			# Spawn item
+			get_tree().get_current_scene().add_child(healthpack_instance)
+			
+func remove_from_scene():
+	queue_free()

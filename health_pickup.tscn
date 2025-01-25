@@ -9,6 +9,8 @@ size = Vector2(64, 64)
 [node name="HealthPickup" type="RigidBody2D"]
 collision_layer = 64
 collision_mask = 3
+gravity_scale = 0.0
+linear_damp = 5.0
 script = ExtResource("1_w4v7c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

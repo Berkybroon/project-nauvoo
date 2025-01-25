@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnj6mmjpjybtl"]
+[gd_scene load_steps=17 format=3 uid="uid://dnj6mmjpjybtl"]
 
 [ext_resource type="Texture2D" uid="uid://ba8gwd0swh56n" path="res://enemysprite_ph.png" id="1_0wake"]
 [ext_resource type="Script" path="res://enemy_armed.gd" id="1_pvddh"]
 [ext_resource type="PackedScene" uid="uid://c3udg015voibn" path="res://bullet.tscn" id="2_v001w"]
 [ext_resource type="Texture2D" uid="uid://c1chriiv11n4l" path="res://base_wep.png" id="2_xqypx"]
 [ext_resource type="Texture2D" uid="uid://ct0g3c271022n" path="res://base_wep_fire.png" id="3_s8vju"]
+[ext_resource type="PackedScene" uid="uid://culpao00slow3" path="res://health_pickup.tscn" id="3_wa1s5"]
 [ext_resource type="Script" path="res://state_machine.gd" id="5_bxe5l"]
 [ext_resource type="Script" path="res://idle.gd" id="6_6gmxe"]
 [ext_resource type="Script" path="res://random_timer.gd" id="7_w5ptc"]
@@ -41,14 +42,8 @@ rotation = -3.14159
 collision_mask = 3
 script = ExtResource("1_pvddh")
 bullet_scene = ExtResource("2_v001w")
-fire_cooldown = null
-bullet_speed = null
-rotation_speed = null
-wandering_speed = null
-chasing_speed = null
-angle_cone_of_vision = null
+healthpack_scene = ExtResource("3_wa1s5")
 max_vision_distance = 500
-angle_between_rays = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0wake")
