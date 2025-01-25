@@ -20,17 +20,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	
 	var input_vector = Vector2.ZERO # The player's movement vector.
-
+	var mouse_position = get_global_mouse_position()
+	
 	# Movement Controls
-	if Input.is_action_pressed("move_right"):
-		input_vector.x += 1
-	if Input.is_action_pressed("move_left"):
-		input_vector.x -= 1
-	if Input.is_action_pressed("move_down"):
-		input_vector.y += 1
-	if Input.is_action_pressed("move_up"):
-		input_vector.y -= 1
+	if !$"../HUD/InventoryGrid".visible:
+		
+		look_at(mouse_position)
+		
+		if Input.is_action_pressed("move_right"):
+			input_vector.x += 1
+		if Input.is_action_pressed("move_left"):
+			input_vector.x -= 1
+		if Input.is_action_pressed("move_down"):
+			input_vector.y += 1
+		if Input.is_action_pressed("move_up"):
+			input_vector.y -= 1
 
 	# Normalize to prevent faster diagonal movement and apply speed
 	if input_vector != Vector2.ZERO:
@@ -42,10 +48,6 @@ func _physics_process(delta: float) -> void:
 
 	# Update movement using velocity
 	move_and_slide()
-
-	# Rotate the player to face the mouse
-	var mouse_position = get_global_mouse_position()
-	look_at(mouse_position)
 
 	# Weapon Controls
 	if Input.is_action_just_pressed("fire_primary"):

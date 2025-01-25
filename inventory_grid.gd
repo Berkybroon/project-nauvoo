@@ -4,6 +4,9 @@ extends GridContainer
 @export var slot_texture: Texture  # Default texture for empty slots
 
 func _ready():
+	
+	hide()
+	
 	# Connect signals
 	inventory_manager.connect("item_added", Callable(self, "_on_item_added"))
 	inventory_manager.connect("item_removed", Callable(self, "_on_item_removed"))
