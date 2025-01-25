@@ -6,6 +6,8 @@ class_name enemy
 @onready var state_machine = $StateMachine as StateMachine
 @onready var vision_ray_cast_2d = $VisionRayCast2D as RayCast2D
 
+@export var healthpack_scene: PackedScene
+
 @export_group("Locomotion")
 @export var rotation_speed: float = 2
 @export var wandering_speed = 150
@@ -33,28 +35,22 @@ func move_to_position(target_position: Vector2):
 	var motion = position.direction_to(target_position) * current_speed
 	navigation_agent_2d.set_velocity(motion)
 	look_at(target_position)
-	rotation -= deg_to_rad(180)
+	rotation -= deg_to_rad(180) # Corrects the enemy sprite walking backwards
 	velocity = motion
 	move_and_slide()
 
 func search_for_player_with_raycast():
-	# Skip processing if enemy is already chasing/attacking
-	#if state_machine.state_name != "Idle" and state_machine.state_name != "Wandering":
-	#	return
 
-	# Ensure angle_between_rays is not zero
+	# Error handling for enemy vision variables
 	if angle_between_rays == 0:
 		push_error("angle_between_rays must not be zero!")
 		return
-	# Ensure angle_cone_of_vision and angle_between_rays are valid
 	if angle_cone_of_vision == null or angle_between_rays == null:
 		push_error("angle_cone_of_vision or angle_between_rays is null!")
 		return
 
-	# Calculate cast_count
+	# Calculate cast_count (with error handling)
 	var cast_count = int(angle_cone_of_vision / angle_between_rays) + 1
-	
-	# Sanity check for cast_count
 	if cast_count < 1:
 		push_error("Invalid cast_count value: must be at least 1.")
 		return
@@ -64,9 +60,6 @@ func search_for_player_with_raycast():
 		vision_ray_cast_2d.target_position = cast_vector
 		vision_ray_cast_2d.force_raycast_update()
 		
-		if vision_ray_cast_2d.is_colliding() && vision_ray_cast_2d.get_collider() is TileMap:
-			print("enemy vision hit a wall?")
-		
 		if vision_ray_cast_2d.is_colliding() && vision_ray_cast_2d.get_collider() is Player:
 			state_machine.transition_to("Firing")
 
@@ -75,12 +68,16 @@ func bullet_impact():
 	take_damage(25)
 
 func take_damage(damage: int):
-	health -= damage  # Adjust damage value as needed
-	print("Enemy hit! Remaining health: ", health)
+	health -= damage
+	print("enemy hit! health: ", health)
 	if health <= 0:
 		die()
 
 # Handle enemy death
 func die():
-	print("Enemy defeated!")
-	queue_free()  # Remove the enemy from the scenea
+	print("gottem")
+	generate_item_drops()
+	queue_free()  # Remove the enemy from the scene
+
+func generate_item_drops():
+	print("drop")

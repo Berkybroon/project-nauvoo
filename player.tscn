@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dsfu5v52im2w"]
+[gd_scene load_steps=19 format=3 uid="uid://dsfu5v52im2w"]
 
 [ext_resource type="Texture2D" uid="uid://fr0rhcklaa3s" path="res://base_playersprite.png" id="1_t08cg"]
 [ext_resource type="Script" path="res://player.gd" id="1_wjem8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bo1pcoim5xfu8" path="res://sprites/ammobar/mag_100.png" id="9_a4uwy"]
 [ext_resource type="Texture2D" uid="uid://dajr4breg8tlh" path="res://sprites/ammobar/mag_empty.png" id="10_h3hb4"]
 [ext_resource type="Script" path="res://ammo_indicator.gd" id="11_rsfi6"]
+[ext_resource type="Texture2D" uid="uid://bpfy3h0qvc7hp" path="res://vision_light.png" id="14_v03vm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f3nm8"]
 animations = [{
@@ -113,5 +114,13 @@ shape = SubResource("CircleShape2D_fxy8p")
 zoom = Vector2(0.5, 0.5)
 
 [node name="HealthBar" parent="." instance=ExtResource("5_t3mwa")]
+
+[node name="VisionLight" type="PointLight2D" parent="."]
+position = Vector2(827, -18)
+rotation = 1.5708
+scale = Vector2(1.57752, 1.32445)
+energy = 0.54
+shadow_enabled = true
+texture = ExtResource("14_v03vm")
 
 [connection signal="timeout" from="WeaponSprite/AmmoIndicator/RevealTimer" to="WeaponSprite/AmmoIndicator" method="_on_reveal_timer_timeout"]

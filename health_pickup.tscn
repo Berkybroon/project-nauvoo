@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://culpao00slow3"]
+
+[ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="1_8g5p0"]
+[ext_resource type="Script" path="res://health_pickup.gd" id="1_w4v7c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2uia"]
+size = Vector2(64, 64)
+
+[node name="HealthPickup" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 3
+script = ExtResource("1_w4v7c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8g5p0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q2uia")

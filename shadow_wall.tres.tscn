@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn6xv7uahtq8t"]
+
+[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://blacktile.png" id="1_2erqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpsyl"]
+size = Vector2(64, 64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d277g"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource("1_2erqw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_dpsyl")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_d277g")

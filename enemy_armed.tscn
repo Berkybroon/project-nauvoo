@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnj6mmjpjybtl"]
+[gd_scene load_steps=16 format=3 uid="uid://dnj6mmjpjybtl"]
 
 [ext_resource type="Texture2D" uid="uid://ba8gwd0swh56n" path="res://enemysprite_ph.png" id="1_0wake"]
 [ext_resource type="Script" path="res://enemy_armed.gd" id="1_pvddh"]
@@ -33,11 +33,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tcoqh"]
+polygon = PackedVector2Array(-147, 40, -152, 1, -147, -40, -133, -76, -110, -105, -79, -131, -41, -151, -1, -154, 42, -146, 74, -136, 102, -114, 124, -90, 136, -64, 150, -31, 151, 2, 149, 34, 143, 59, 131, 81, 112, 107, 91, 124, 74, 138, 38, 150, 1, 153, -41, 147, -78, 132, -104, 112, -123, 84, -139, 60)
+
 [node name="EnemyArmed" type="CharacterBody2D"]
 rotation = -3.14159
+collision_mask = 3
 script = ExtResource("1_pvddh")
 bullet_scene = ExtResource("2_v001w")
+fire_cooldown = null
+bullet_speed = null
+rotation_speed = null
+wandering_speed = null
+chasing_speed = null
+angle_cone_of_vision = null
 max_vision_distance = 500
+angle_between_rays = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0wake")
@@ -95,6 +106,10 @@ offset_bottom = -41.0
 
 [node name="VisionRayCast2D" type="RayCast2D" parent="."]
 collision_mask = 3
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(0.22, 0.22)
+occluder = SubResource("OccluderPolygon2D_tcoqh")
 
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Idle/RotationTimer" to="StateMachine/Idle" method="_on_rotation_timer_timeout"]

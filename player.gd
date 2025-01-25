@@ -105,7 +105,7 @@ func stop_sprinting():
 	speed = 600
 
 func bullet_impact():
-	take_damage(25)
+	take_damage(10)
 	
 func take_damage(damage: int):
 	health -= damage
