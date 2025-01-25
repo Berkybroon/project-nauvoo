@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://w02l068uqdgc" path="res://testprojectile.png" id="1_x3tdn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eru6t"]
+size = Vector2(18, 20)
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 32

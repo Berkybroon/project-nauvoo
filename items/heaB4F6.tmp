@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c36rvogtac8ey"]
+
+[ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="1_wrivf"]
+[ext_resource type="Script" path="res://item.gd" id="2_t5ox4"]
+
+[resource]
+script = ExtResource("2_t5ox4")
+name = "Health Pack"
+description = "A well-stocked first-aid kit"
+icon = ExtResource("1_wrivf")
+is_stackable = true
+max_stack = 4

@@ -24,12 +24,12 @@ func physics_update(delta):
 		var next_position = navigation_agent_2d.get_next_path_position()
 		(owner as enemy).move_to_position(next_position)
 
-func get_random_position_in_radius(wandering_radius: float) -> Vector2:
+func get_random_position_in_radius(radius: float) -> Vector2:
 	# Get the global position of the owner
 	var global_position = owner.global_position
 	# Generate a random angle in radians and calculate a random offset
 	var random_angle = randf() * TAU  # TAU is 2π radians
-	var random_offset = Vector2.from_angle(random_angle) * randf_range(0, wandering_radius)
+	var random_offset = Vector2.from_angle(random_angle) * randf_range(0, radius)
 	# Calculate the random point relative to the global position
 	var random_point = global_position + random_offset
 	# Find the closest navigable point on the map
