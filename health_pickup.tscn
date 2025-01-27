@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="1_8g5p0"]
 [ext_resource type="Script" path="res://health_pickup.gd" id="1_w4v7c"]
-[ext_resource type="Resource" uid="uid://c36rvogtac8ey" path="res://items/health_pack.tres" id="2_px1m6"]
+[ext_resource type="Resource" uid="uid://c7o0h2ugotb0c" path="res://items/health_pack.tres" id="2_px1m6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2uia"]
 size = Vector2(64, 64)

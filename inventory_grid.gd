@@ -62,8 +62,16 @@ func _use_item(slot_index):
 	var item = inventory_manager.inventory[slot_index]
 	if item:
 		print("Using item:", item.name)
-		# Implement your item usage logic here
-		# Example: Heal player or apply item effect
+		
+		if item.item_script:
+			var script_instance = item.item_script.new() # Instance the item script so methods can be called.
+			if script_instance.has_method("on_use"):
+				script_instance.on_use($"../../Player") # Run use method on player node
+			else:
+				print("No on_use method found in the item script")
+		else:
+			print("No script assigned to the item")
+		
 		inventory_manager.remove_item(item)  # Optionally remove after use
 		_update_inventory_display()
 

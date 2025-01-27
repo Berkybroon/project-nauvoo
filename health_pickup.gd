@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var player_in_range = false
 
-@export var item_resource: Item
+@export var item_resource: ItemBase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

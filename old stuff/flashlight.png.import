@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdxncwn5yjcy0"
-path="res://.godot/imported/flashlight.png-b3ba371939be62918e933c53704c9603.ctex"
+path="res://.godot/imported/flashlight.png-ec45d43b5e32aa30713f311a3f850fc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flashlight.png"
-dest_files=["res://.godot/imported/flashlight.png-b3ba371939be62918e933c53704c9603.ctex"]
+source_file="res://old stuff/flashlight.png"
+dest_files=["res://.godot/imported/flashlight.png-ec45d43b5e32aa30713f311a3f850fc4.ctex"]
 
 [params]
 

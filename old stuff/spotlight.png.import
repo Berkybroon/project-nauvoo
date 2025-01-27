@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://davl7fp1pqtrc"
-path="res://.godot/imported/spotlight.png-db6496ad6e5adeb9f49a602f6455b921.ctex"
+path="res://.godot/imported/spotlight.png-b61a94cf795eb224fd2e621f81f29db0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spotlight.png"
-dest_files=["res://.godot/imported/spotlight.png-db6496ad6e5adeb9f49a602f6455b921.ctex"]
+source_file="res://old stuff/spotlight.png"
+dest_files=["res://.godot/imported/spotlight.png-b61a94cf795eb224fd2e621f81f29db0.ctex"]
 
 [params]
 

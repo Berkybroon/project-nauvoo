@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c36rvogtac8ey"]
+[gd_resource type="Resource" script_class="ItemBase" load_steps=4 format=3 uid="uid://c7o0h2ugotb0c"]
 
+[ext_resource type="Script" path="res://item_base.gd" id="1_il0wq"]
+[ext_resource type="Script" path="res://items/health_pack.gd" id="1_t2usq"]
 [ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="1_wrivf"]
-[ext_resource type="Script" path="res://item.gd" id="2_t5ox4"]
 
 [resource]
-script = ExtResource("2_t5ox4")
-name = "health_pack"
-description = "A well-stocked first-aid kit"
+script = ExtResource("1_il0wq")
+name = "Health Pack"
+description = "A well-stocked first aid kit"
 icon = ExtResource("1_wrivf")
-is_stackable = true
-max_stack = 4
+is_stackable = false
+max_stack = 1
+item_script = ExtResource("1_t2usq")
