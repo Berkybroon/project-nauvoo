@@ -19,4 +19,5 @@ func update(_delta: float) -> void:
 		
 	owner.fire()
 	
-	
+	if !(owner as enemy).search_for_player_with_raycast():
+		state_machine.transition_to("Chase")

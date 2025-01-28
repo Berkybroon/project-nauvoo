@@ -12,7 +12,7 @@ class_name enemy
 @export var rotation_speed: float = 2
 @export var wandering_speed = 150
 @export var navigation_target: CharacterBody2D
-@export var chasing_speed = 200
+@export var chasing_speed = 300
 
 @export_group("Scanning for player")
 @export var angle_cone_of_vision = 90
@@ -29,7 +29,7 @@ func _ready():
 	current_speed = wandering_speed
 
 func _process(delta):
-	search_for_player_with_raycast()
+	pass
 
 func move_to_position(target_position: Vector2):
 	var motion = position.direction_to(target_position) * current_speed
@@ -39,29 +39,32 @@ func move_to_position(target_position: Vector2):
 	velocity = motion
 	move_and_slide()
 
-func search_for_player_with_raycast():
-
+func search_for_player_with_raycast() -> bool:
+	
 	# Error handling for enemy vision variables
 	if angle_between_rays == 0:
 		push_error("angle_between_rays must not be zero!")
-		return
+		return false
 	if angle_cone_of_vision == null or angle_between_rays == null:
 		push_error("angle_cone_of_vision or angle_between_rays is null!")
-		return
-
+		return false
+	
 	# Calculate cast_count (with error handling)
 	var cast_count = int(angle_cone_of_vision / angle_between_rays) + 1
 	if cast_count < 1:
 		push_error("Invalid cast_count value: must be at least 1.")
-		return
+		return false
 	
 	for index in cast_count:
 		var cast_vector = max_vision_distance * Vector2.UP.rotated(rad_to_deg(angle_between_rays) * (index - cast_count) / 2.0 + deg_to_rad(180))
 		vision_ray_cast_2d.target_position = cast_vector
 		vision_ray_cast_2d.force_raycast_update()
 		
+		# Return true if any of the raycasts detect the player
 		if vision_ray_cast_2d.is_colliding() && vision_ray_cast_2d.get_collider() is Player:
-			state_machine.transition_to("Firing")
+			return true
+		# Return false if none
+	return false
 
 # Called when hit by a bullet
 func bullet_impact():

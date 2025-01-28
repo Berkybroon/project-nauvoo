@@ -14,6 +14,9 @@ func move_to_next_random_location():
 
 func physics_update(_delta):
 	# Check if the target position is valid and reachable
+	if (owner as enemy).search_for_player_with_raycast():
+		state_machine.transition_to("Firing")
+	
 	if navigation_agent_2d.target_position != Vector2.ZERO and (
 		navigation_agent_2d.is_navigation_finished() or 
 		!navigation_agent_2d.is_target_reachable()
