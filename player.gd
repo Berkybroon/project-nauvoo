@@ -19,7 +19,7 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	var input_vector = Vector2.ZERO # The player's movement vector.
 	var mouse_position = get_global_mouse_position()

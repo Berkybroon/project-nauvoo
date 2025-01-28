@@ -8,7 +8,7 @@ func _ready() -> void:
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 		# Lock position relative to the parent, but keep rotation at 0.
 	global_position = weapon_node.global_position + Vector2(100, 0)

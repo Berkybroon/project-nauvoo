@@ -7,7 +7,7 @@ func _ready():
 	contact_monitor = true
 	max_contacts_reported = 1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Set the bullet's linear velocity to move it
 	linear_velocity = Vector2(speed, 0).rotated(rotation)
 

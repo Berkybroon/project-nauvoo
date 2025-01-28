@@ -9,8 +9,8 @@ class_name ItemBase
 @export var item_script: Script
 
 # Override these methods in derived item scripts
-func on_use(player):
+func on_use(_player):
 	print(name, "used! (No behavior defined. Check script is assigned to tres.)")
 
-func on_drop(player):
+func on_drop(_player):
 	print(name, "dropped! (No behavior defined. Check script is assigned to tres.)")

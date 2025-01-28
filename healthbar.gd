@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 # Reference the parent node (player)
 @onready var parent_node = $".."
 
-func _process(delta):
+func _process(_delta):
 	
 	# Lock position relative to the parent, but keep rotation at 0.
 	global_position = parent_node.global_position + Vector2(0, 150)

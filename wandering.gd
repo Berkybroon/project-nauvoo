@@ -12,7 +12,7 @@ func move_to_next_random_location():
 	random_position_in_radius = get_random_position_in_radius(wandering_radius)
 	navigation_agent_2d.target_position = random_position_in_radius
 
-func physics_update(delta):
+func physics_update(_delta):
 	# Check if the target position is valid and reachable
 	if navigation_agent_2d.target_position != Vector2.ZERO and (
 		navigation_agent_2d.is_navigation_finished() or 
@@ -42,5 +42,5 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

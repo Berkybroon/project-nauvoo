@@ -7,7 +7,7 @@ func enter(msg = {}) -> void:
 func exit() -> void:
 	pass
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	
 	# Ensure the player exists in the main scene
 	var player = get_tree().get_current_scene().get_node_or_null("Player")
@@ -18,3 +18,5 @@ func update(delta: float) -> void:
 		owner.rotation += deg_to_rad(180)
 		
 	owner.fire()
+	
+	

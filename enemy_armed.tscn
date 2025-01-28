@@ -85,6 +85,9 @@ script = ExtResource("8_ghuou")
 [node name="Chase" type="Node" parent="StateMachine"]
 script = ExtResource("9_x3vg1")
 
+[node name="RandomUpdateTimer" type="Timer" parent="StateMachine/Chase"]
+script = ExtResource("7_w5ptc")
+
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("10_bpgmm")
 
@@ -108,3 +111,4 @@ occluder = SubResource("OccluderPolygon2D_tcoqh")
 
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Idle/RotationTimer" to="StateMachine/Idle" method="_on_rotation_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Chase/RandomUpdateTimer" to="StateMachine/Chase" method="_on_random_update_timer_timeout"]
