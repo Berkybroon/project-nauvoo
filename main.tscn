@@ -777,7 +777,7 @@ tile_map_data = PackedByteArray("AADj/+v/AQABAAAAAADj/+z/AQABAAAAAADj/+3/AQABAAA
 tile_set = SubResource("TileSet_1dauy")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_oajdq")]
-position = Vector2(1376, 505)
+position = Vector2(1405, 576)
 scale = Vector2(0.5, 0.5)
 collision_mask = 6
 
@@ -800,6 +800,10 @@ position = Vector2(466, 166)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="Inventory" type="Node" parent="HUD"]
+script = ExtResource("7_i5aok")
+max_slots = 12
+
 [node name="InventoryGrid" type="GridContainer" parent="HUD" node_paths=PackedStringArray("inventory_manager", "popup_menu")]
 offset_left = 29.0
 offset_top = 548.0
@@ -812,9 +816,5 @@ slot_texture = ExtResource("6_lrybv")
 popup_menu = NodePath("../PopupMenu")
 
 [node name="PopupMenu" type="PopupMenu" parent="HUD"]
-
-[node name="Inventory" type="Node" parent="HUD"]
-script = ExtResource("7_i5aok")
-max_slots = 2
 
 [connection signal="item_added" from="HUD/Inventory" to="HUD/InventoryGrid" method="_on_inventory_item_added"]

@@ -6,7 +6,9 @@ class_name enemy
 @onready var state_machine = $StateMachine as StateMachine
 @onready var vision_ray_cast_2d = $VisionRayCast2D as RayCast2D
 
+@export_group("Loot Table")
 @export var healthpack_scene: PackedScene
+@export var cigarettes_scene: PackedScene
 
 @export_group("Locomotion")
 @export var rotation_speed: float = 2
@@ -21,6 +23,8 @@ class_name enemy
 
 var current_speed
 var health = 100  # Add health for the enemy
+
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	var navigation_map = get_tree().get_first_node_in_group("tilemap").get_navigation_map()
@@ -70,6 +74,7 @@ func search_for_player_with_raycast() -> bool:
 func bullet_impact():
 	take_damage(25)
 
+# Reduce health and check for death.
 func take_damage(damage: int):
 	health -= damage
 	print("enemy hit! health: ", health)
@@ -84,12 +89,45 @@ func die():
 
 func generate_item_drops():
 	
-	var healthpack_instance = healthpack_scene.instantiate()
-	healthpack_instance.global_position = global_position # Set spawn position
+	# Initialize array of scenes of generated items.
+	var drops = []
 	
-	# Put physics here - "push" the item in random direction when dropped
+	# Generate random number (consider it a 'luck' value).
+	var random_number = rng.randi_range(1, 100)
 	
-	get_tree().get_current_scene().call_deferred("add_child", healthpack_instance)
+	# Drop health pack (guaranteed for now)
+	drops.append(healthpack_scene)
+	
+	if random_number > 50:
+		drops.append(cigarettes_scene)
+	
+	# Iterate through array and spawn all drops.
+	for drop in drops:
+		var instance = drop.instantiate()
+		instance.global_position = global_position
+		get_tree().get_current_scene().call_deferred("add_child", instance)
+		
+		# Make sure root node is a RigidBody2D
+		if instance is RigidBody2D:
+			print(instance)
+			instance.sleeping = false
+		
+			# Apply random push after ensuring it's in the tree
+			var random_angle = rng.randf() * TAU
+			var push_direction = Vector2(cos(random_angle), sin(random_angle))
+			var push_strength = 1000.0
+
+			# Use deferred call for impulse application
+			instance.call_deferred("apply_impulse", Vector2.ZERO, push_direction * push_strength)
+
+			# Debug: Check if the instance is in the tree. Remove later.
+			if not instance.is_inside_tree():
+				print("Instance is not properly added to the tree!")
+			else:
+				print("Instance added successfully.")
+			print("Linear velocity after impulse: ", instance.linear_velocity)
+			
+
 
 func remove_from_scene():
 	queue_free()
