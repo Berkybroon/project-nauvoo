@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://culpao00slow3"]
 
-[ext_resource type="Script" path="res://scripts/health_pickup.gd" id="1_pyntl"]
+[ext_resource type="Script" path="res://items/health_pickup.gd" id="1_pyntl"]
 [ext_resource type="Resource" uid="uid://c7o0h2ugotb0c" path="res://items/health_pack.tres" id="2_x2nkb"]
 [ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="3_08nlm"]
 

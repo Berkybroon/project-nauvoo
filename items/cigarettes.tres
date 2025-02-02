@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://d2rhl6eergfcr"]
+[gd_resource type="Resource" script_class="ItemBase" load_steps=4 format=3 uid="uid://d2rhl6eergfcr"]
 
 [ext_resource type="Texture2D" uid="uid://xhml11u5araf" path="res://sprites/pickups/smoxe.png" id="1_i4cs0"]
 [ext_resource type="Script" path="res://scripts/item_base.gd" id="1_kxuwt"]
+[ext_resource type="Script" path="res://items/cigarettes.gd" id="2_7nxqj"]
 
 [resource]
 script = ExtResource("1_kxuwt")
@@ -10,3 +11,4 @@ description = "An opened packet of Red Star cigarettes. Not good for you, but so
 icon = ExtResource("1_i4cs0")
 is_stackable = false
 max_stack = 1
+item_script = ExtResource("2_7nxqj")

@@ -8,6 +8,7 @@ var push_vector := Vector2.ZERO  # Store the push direction
 
 @export var item_resource: ItemBase
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	

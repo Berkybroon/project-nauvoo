@@ -1,63 +1,11 @@
-extends "res://scripts/item_pickup_base.gd"
+extends "res://scripts/item_base.gd"
 
-func _ready() -> void:
-	
-	# Hide pickup prompt
-	$PickupPrompt.visible = false
-	
-	# Enable contact reporting to detect collisions
-	contact_monitor = true
-	max_contacts_reported = 1
-	
-	# Connect signals from pickup range area
-	$Area2D.connect("body_entered", Callable(self, "_on_body_entered"))
-	$Area2D.connect("body_exited", Callable(self, "_on_body_exited"))
-	
-	# Generate push direction
-	var random_angle = rng.randf() * TAU
-	push_vector = Vector2(cos(random_angle), sin(random_angle)) * push_force
+const item_scene_path = "res://scenes/cigarettes_pickup.tscn"
 
+func on_use(player: Player):
+	print("puff puff")
 
-func _process(delta: float) -> void:
-	
-	# Positioning and rotation correction
-	$PickupPrompt.rotation = -rotation
-	$PickupPrompt.global_position.x = global_position.x - 20
-	$PickupPrompt.global_position.y = global_position.y - 100
-	
-	# Pickup action
-	if player_in_range:
-		if Input.is_action_just_pressed("interact"):
-			
-			# Try to add to player inventory
-			if $"../HUD/Inventory".add_item(item_resource):
-				queue_free()
-
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	
-	if not push_applied:
-		set_deferred("sleeping", false)
-		linear_velocity = push_vector / mass
-		push_applied = true  # Ensure it's only applied once
-	
-	# Check for collisions
-	for i in range(state.get_contact_count()):
-		var collider = state.get_contact_collider_object(i)
-		
-		# Automatic pickup & heal if player is missing health
-		if collider is Player:
-			if collider.health < collider.max_health:
-				collider.health += 50
-				queue_free()
-
-# Signal when a body enters the detection area
-func _on_body_entered(body):
-	if body.name == "Player":
-		$PickupPrompt.visible = true
-		player_in_range = true
-
-# Signal when a body exits the detection area
-func _on_body_exited(body):
-	if body.name == "Player":
-		$PickupPrompt.visible = false
-		player_in_range = false
+func on_drop(player, main_scene):
+	var item_scene = load(item_scene_path).instantiate()
+	item_scene.global_position = player.global_position
+	main_scene.call_deferred("add_child", item_scene)

@@ -7,5 +7,5 @@ func on_use(player: Player):
 	else:
 		print("Player's health is already full!")
 
-func on_drop(player):
+func on_drop(player, main_scene):
 	print("Dropped the health pack.")

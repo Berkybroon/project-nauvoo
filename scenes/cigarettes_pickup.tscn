@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cbvknjvv7ixyi"]
 
-[ext_resource type="Script" path="res://items/cigarettes.gd" id="1_do87w"]
-[ext_resource type="Resource" uid="uid://d2rhl6eergfcr" path="res://items/cigarettes.tres" id="2_2k145"]
-[ext_resource type="Texture2D" uid="uid://xhml11u5araf" path="res://sprites/pickups/smoxe.png" id="2_ug52i"]
+[ext_resource type="Script" path="res://items/cigarettes_pickup.gd" id="1_373p0"]
+[ext_resource type="Resource" uid="uid://d2rhl6eergfcr" path="res://items/cigarettes.tres" id="2_ftc67"]
+[ext_resource type="Texture2D" uid="uid://xhml11u5araf" path="res://sprites/pickups/smoxe.png" id="3_xx4kh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5io5d"]
 size = Vector2(41, 55.5)
@@ -15,11 +15,11 @@ collision_layer = 64
 collision_mask = 3
 gravity_scale = 0.0
 linear_damp = 5.0
-script = ExtResource("1_do87w")
-item_resource = ExtResource("2_2k145")
+script = ExtResource("1_373p0")
+item_resource = ExtResource("2_ftc67")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ug52i")
+texture = ExtResource("3_xx4kh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.5, 1.75)

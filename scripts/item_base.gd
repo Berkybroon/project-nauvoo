@@ -8,9 +8,10 @@ class_name ItemBase
 @export var max_stack: int = 1
 @export var item_script: Script
 
+
 # Override these methods in derived item scripts
 func on_use(_player):
 	print(name, "used! (No behavior defined. Check script is assigned to tres.)")
 
-func on_drop(_player):
+func on_drop(player, main_scene):
 	print(name, "dropped! (No behavior defined. Check script is assigned to tres.)")

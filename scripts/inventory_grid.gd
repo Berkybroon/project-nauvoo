@@ -76,11 +76,17 @@ func _use_item(slot_index):
 		_update_inventory_display()
 
 func _drop_item(slot_index):
+	
 	var item = inventory_manager.inventory[slot_index]
 	if item:
 		print("Dropping item:", item.name)
 		inventory_manager.remove_item(item)  # Remove from inventory
 		_update_inventory_display()
+	
+	if item.item_script:
+			var script_instance = item.item_script.new() # Instance the item script so methods can be called.
+			if script_instance.has_method("on_drop"):
+				script_instance.on_drop($"../../Player", get_tree().get_root()) # Run drop method to player position and main scene
 
 func _update_inventory_display():
 	for i in range(get_child_count()):
