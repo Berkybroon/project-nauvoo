@@ -1,4 +1,4 @@
-extends "res://enemy.gd"
+extends "res://scripts/enemy.gd"
 
 class_name EnemyArmed
 

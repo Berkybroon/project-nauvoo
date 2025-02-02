@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3udg015voibn"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_3gaxo"]
-[ext_resource type="Texture2D" uid="uid://w02l068uqdgc" path="res://testprojectile.png" id="1_x3tdn"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_0xkub"]
+[ext_resource type="Texture2D" uid="uid://w02l068uqdgc" path="res://sprites/testprojectile.png" id="2_ro278"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eru6t"]
 size = Vector2(18, 20)
@@ -10,10 +10,10 @@ size = Vector2(18, 20)
 collision_layer = 32
 collision_mask = 7
 gravity_scale = 0.0
-script = ExtResource("1_3gaxo")
+script = ExtResource("1_0xkub")
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_x3tdn")
+texture = ExtResource("2_ro278")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_eru6t")

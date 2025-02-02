@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba8gwd0swh56n"
-path="res://.godot/imported/enemysprite_ph.png-b061106867bc48a59894214eae1c8f89.ctex"
+uid="uid://ct0g3c271022n"
+path="res://.godot/imported/base_wep_fire.png-00b8afbb40a0938e82f351a2e1c18156.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemysprite_ph.png"
-dest_files=["res://.godot/imported/enemysprite_ph.png-b061106867bc48a59894214eae1c8f89.ctex"]
+source_file="res://sprites/base_wep_fire.png"
+dest_files=["res://.godot/imported/base_wep_fire.png-00b8afbb40a0938e82f351a2e1c18156.ctex"]
 
 [params]
 

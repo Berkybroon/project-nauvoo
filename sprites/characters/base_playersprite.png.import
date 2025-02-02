@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dffndafp7svri"
-path="res://.godot/imported/blacktile.png-f6e6dfc2386f7ba682e0ca21aa944ee8.ctex"
+uid="uid://fr0rhcklaa3s"
+path="res://.godot/imported/base_playersprite.png-0bacb955625be08ceac9dd6795f41f0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blacktile.png"
-dest_files=["res://.godot/imported/blacktile.png-f6e6dfc2386f7ba682e0ca21aa944ee8.ctex"]
+source_file="res://sprites/characters/base_playersprite.png"
+dest_files=["res://.godot/imported/base_playersprite.png-0bacb955625be08ceac9dd6795f41f0b.ctex"]
 
 [params]
 

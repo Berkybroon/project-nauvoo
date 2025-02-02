@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct0g3c271022n"
-path="res://.godot/imported/base_wep_fire.png-4d1ef465449d31d1f142a4c88919a222.ctex"
+uid="uid://dffndafp7svri"
+path="res://.godot/imported/blacktile.png-8b681c47ec88c1688d2e53719cef64c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://base_wep_fire.png"
-dest_files=["res://.godot/imported/base_wep_fire.png-4d1ef465449d31d1f142a4c88919a222.ctex"]
+source_file="res://sprites/blacktile.png"
+dest_files=["res://.godot/imported/blacktile.png-8b681c47ec88c1688d2e53719cef64c7.ctex"]
 
 [params]
 

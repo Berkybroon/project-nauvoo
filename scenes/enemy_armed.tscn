@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://dnj6mmjpjybtl"]
+
+[ext_resource type="Texture2D" uid="uid://ba8gwd0swh56n" path="res://sprites/characters/enemysprite_ph.png" id="1_0wake"]
+[ext_resource type="Script" path="res://scripts/enemy_armed.gd" id="1_pvddh"]
+[ext_resource type="PackedScene" uid="uid://c3udg015voibn" path="res://scenes/bullet.tscn" id="2_v001w"]
+[ext_resource type="Texture2D" uid="uid://c1chriiv11n4l" path="res://sprites/base_wep.png" id="2_xqypx"]
+[ext_resource type="Texture2D" uid="uid://ct0g3c271022n" path="res://sprites/base_wep_fire.png" id="3_s8vju"]
+[ext_resource type="PackedScene" uid="uid://culpao00slow3" path="res://scenes/health_pickup.tscn" id="3_wa1s5"]
+[ext_resource type="PackedScene" uid="uid://cbvknjvv7ixyi" path="res://items/cigarettes.tscn" id="4_xcs75"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="5_bxe5l"]
+[ext_resource type="Script" path="res://scripts/idle.gd" id="6_6gmxe"]
+[ext_resource type="Script" path="res://scripts/random_timer.gd" id="7_w5ptc"]
+[ext_resource type="Script" path="res://scripts/wandering.gd" id="8_ghuou"]
+[ext_resource type="Script" path="res://scripts/chase.gd" id="9_x3vg1"]
+[ext_resource type="Script" path="res://scripts/attack.gd" id="10_bpgmm"]
+[ext_resource type="Script" path="res://scripts/firing.gd" id="11_41ft7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kd133"]
+radius = 33.0151
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eu6h8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xqypx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s8vju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xqypx")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tcoqh"]
+polygon = PackedVector2Array(-147, 40, -152, 1, -147, -40, -133, -76, -110, -105, -79, -131, -41, -151, -1, -154, 42, -146, 74, -136, 102, -114, 124, -90, 136, -64, 150, -31, 151, 2, 149, 34, 143, 59, 131, 81, 112, 107, 91, 124, 74, 138, 38, 150, 1, 153, -41, 147, -78, 132, -104, 112, -123, 84, -139, 60)
+
+[node name="EnemyArmed" type="CharacterBody2D"]
+rotation = -3.14159
+collision_mask = 3
+script = ExtResource("1_pvddh")
+bullet_scene = ExtResource("2_v001w")
+healthpack_scene = ExtResource("3_wa1s5")
+cigarettes_scene = ExtResource("4_xcs75")
+max_vision_distance = 500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0wake")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kd133")
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-19, -12)
+rotation = -1.5708
+scale = Vector2(0.28, 0.28)
+sprite_frames = SubResource("SpriteFrames_eu6h8")
+animation = &"fire"
+
+[node name="PlayerMuzzle" type="Marker2D" parent="WeaponSprite"]
+position = Vector2(0, -150)
+rotation = 4.71239
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_bxe5l")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("6_6gmxe")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+script = ExtResource("7_w5ptc")
+min_time = 2.0
+max_time = 6.0
+
+[node name="RotationTimer" type="Timer" parent="StateMachine/Idle"]
+script = ExtResource("7_w5ptc")
+min_time = 0.2
+max_time = 1.0
+
+[node name="Wandering" type="Node" parent="StateMachine"]
+script = ExtResource("8_ghuou")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("9_x3vg1")
+
+[node name="RandomUpdateTimer" type="Timer" parent="StateMachine/Chase"]
+script = ExtResource("7_w5ptc")
+min_time = 0.5
+max_time = 1.0
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("10_bpgmm")
+
+[node name="Firing" type="Node" parent="StateMachine"]
+script = ExtResource("11_41ft7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 55.0
+target_desired_distance = 80.0
+path_postprocessing = 1
+simplify_path = true
+avoidance_enabled = true
+radius = 35.0
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -64.0
+offset_right = 17.0
+offset_bottom = -41.0
+
+[node name="VisionRayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(0.22, 0.22)
+occluder = SubResource("OccluderPolygon2D_tcoqh")
+
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Idle/RotationTimer" to="StateMachine/Idle" method="_on_rotation_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Chase/RandomUpdateTimer" to="StateMachine/Chase" method="_on_random_update_timer_timeout"]

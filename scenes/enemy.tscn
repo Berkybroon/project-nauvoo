@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://btxol316mhxga"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_2qof3"]
-[ext_resource type="Texture2D" uid="uid://dy4udl8i10j5b" path="res://old stuff/zombie_standing.png" id="1_qmfw8"]
-[ext_resource type="Script" path="res://state_machine.gd" id="3_87a0n"]
-[ext_resource type="Script" path="res://idle.gd" id="4_ua2qn"]
-[ext_resource type="Script" path="res://random_timer.gd" id="5_k2ld5"]
-[ext_resource type="Script" path="res://wandering.gd" id="6_cc85e"]
-[ext_resource type="Script" path="res://chase.gd" id="7_mqequ"]
-[ext_resource type="Script" path="res://attack.gd" id="8_nlbi0"]
-[ext_resource type="Script" path="res://firing.gd" id="9_2uaq1"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vomd7"]
+[ext_resource type="Texture2D" uid="uid://dy4udl8i10j5b" path="res://old stuff/zombie_standing.png" id="2_k6h3m"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="3_7hgea"]
+[ext_resource type="Script" path="res://scripts/idle.gd" id="4_s552t"]
+[ext_resource type="Script" path="res://scripts/random_timer.gd" id="5_gn6lm"]
+[ext_resource type="Script" path="res://scripts/wandering.gd" id="6_jfb5m"]
+[ext_resource type="Script" path="res://scripts/chase.gd" id="7_v023w"]
+[ext_resource type="Script" path="res://scripts/attack.gd" id="8_r2c5g"]
+[ext_resource type="Script" path="res://scripts/firing.gd" id="9_7t8su"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_js2xl"]
 radius = 13.0
@@ -16,10 +16,10 @@ height = 46.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_mask = 3
-script = ExtResource("1_2qof3")
+script = ExtResource("1_vomd7")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_qmfw8")
+texture = ExtResource("2_k6h3m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
@@ -28,33 +28,33 @@ shape = SubResource("CapsuleShape2D_js2xl")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_87a0n")
+script = ExtResource("3_7hgea")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("4_ua2qn")
+script = ExtResource("4_s552t")
 
 [node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
-script = ExtResource("5_k2ld5")
+script = ExtResource("5_gn6lm")
 min_time = 3.0
 max_time = 6.0
 
 [node name="RotationTimer" type="Timer" parent="StateMachine/Idle"]
-script = ExtResource("5_k2ld5")
+script = ExtResource("5_gn6lm")
 min_time = 0.2
 max_time = 1.0
 
 [node name="Wandering" type="Node" parent="StateMachine"]
-script = ExtResource("6_cc85e")
+script = ExtResource("6_jfb5m")
 
 [node name="Chase" type="Node" parent="StateMachine"]
-script = ExtResource("7_mqequ")
+script = ExtResource("7_v023w")
 
 [node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("8_nlbi0")
+script = ExtResource("8_r2c5g")
 
 [node name="Firing" type="Node" parent="StateMachine"]
-script = ExtResource("9_2uaq1")
+script = ExtResource("9_7t8su")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -20.0

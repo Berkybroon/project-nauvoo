@@ -1,12 +1,13 @@
-[gd_scene load_steps=23 format=4 uid="uid://bwom6w76lvmpn"]
+[gd_scene load_steps=25 format=4 uid="uid://bwom6w76lvmpn"]
 
-[ext_resource type="Texture2D" uid="uid://11nvrcip8wns" path="res://spritesheet_tiles.png" id="1_lmfnk"]
-[ext_resource type="PackedScene" uid="uid://dsfu5v52im2w" path="res://player.tscn" id="1_oajdq"]
-[ext_resource type="PackedScene" uid="uid://culpao00slow3" path="res://health_pickup.tscn" id="4_6nni5"]
-[ext_resource type="PackedScene" uid="uid://dnj6mmjpjybtl" path="res://enemy_armed.tscn" id="4_7ntxt"]
-[ext_resource type="Script" path="res://inventory_grid.gd" id="5_rvwru"]
-[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://blacktile.png" id="6_lrybv"]
-[ext_resource type="Script" path="res://inventory.gd" id="7_i5aok"]
+[ext_resource type="Texture2D" uid="uid://11nvrcip8wns" path="res://sprites/spritesheet_tiles.png" id="1_lmfnk"]
+[ext_resource type="PackedScene" uid="uid://dsfu5v52im2w" path="res://scenes/player.tscn" id="1_oajdq"]
+[ext_resource type="PackedScene" uid="uid://culpao00slow3" path="res://scenes/health_pickup.tscn" id="4_6nni5"]
+[ext_resource type="PackedScene" uid="uid://dnj6mmjpjybtl" path="res://scenes/enemy_armed.tscn" id="4_7ntxt"]
+[ext_resource type="PackedScene" uid="uid://b405f0cgl2g5" path="res://scenes/extract.tscn" id="5_p628o"]
+[ext_resource type="Script" path="res://scripts/inventory_grid.gd" id="5_rvwru"]
+[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://sprites/blacktile.png" id="6_lrybv"]
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="7_i5aok"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_suu8l"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -20,10 +21,28 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dw7s3"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fcggq"]
+vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
+agent_radius = 0.0
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uo0ba"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q5b57"]
+vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_s10p6"]
+vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq2p"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
@@ -59,19 +78,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
 agent_radius = 0.0
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_knsox"]
-vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
-agent_radius = 0.0
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_fchux"]
-vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
-agent_radius = 0.0
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_x822t"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_og8vr"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
@@ -89,34 +96,49 @@ texture_region_size = Vector2i(64, 64)
 1:0/next_alternative_id = 2
 1:0/0 = 0
 1:0/0/terrain_set = 0
-1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_knsox")
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 1:0/1 = 1
 2:0/next_alternative_id = 2
 2:0/0 = 0
 2:0/0/terrain_set = 0
-2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fchux")
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 2:0/1 = 1
 3:0/next_alternative_id = 2
 3:0/0 = 0
 3:0/0/terrain_set = 0
-3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_x822t")
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 3:0/1 = 1
 4:0/0 = 0
+4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 5:0/0 = 0
+5:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 6:0/0 = 0
+6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 7:0/0 = 0
+7:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 8:0/0 = 0
+8:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_og8vr")
 9:0/0 = 0
 10:0/0 = 0
+10:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 11:0/0 = 0
+11:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 12:0/0 = 0
+12:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 13:0/0 = 0
+13:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 14:0/0 = 0
+14:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 15:0/0 = 0
+15:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 16:0/0 = 0
+16:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 17:0/0 = 0
+17:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 18:0/0 = 0
+18:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 19:0/0 = 0
+19:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fcggq")
 20:0/0 = 0
 21:0/0 = 0
 22:0/0 = 0
@@ -170,11 +192,17 @@ texture_region_size = Vector2i(64, 64)
 12:2/0 = 0
 13:2/0 = 0
 14:2/0 = 0
+14:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s10p6")
 15:2/0 = 0
+15:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s10p6")
 16:2/0 = 0
+16:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s10p6")
 17:2/0 = 0
+17:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s10p6")
 18:2/0 = 0
+18:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s10p6")
 19:2/0 = 0
+19:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s10p6")
 20:2/0 = 0
 21:2/0 = 0
 22:2/0 = 0
@@ -196,11 +224,17 @@ texture_region_size = Vector2i(64, 64)
 12:3/0 = 0
 13:3/0 = 0
 14:3/0 = 0
+14:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_iqq2p")
 15:3/0 = 0
+15:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_iqq2p")
 16:3/0 = 0
+16:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_iqq2p")
 17:3/0 = 0
+17:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_iqq2p")
 18:3/0 = 0
+18:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_iqq2p")
 19:3/0 = 0
+19:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_iqq2p")
 20:3/0 = 0
 21:3/0 = 0
 22:3/0 = 0
@@ -784,19 +818,23 @@ collision_mask = 6
 [node name="EnemyArmed2" parent="." instance=ExtResource("4_7ntxt")]
 position = Vector2(1545, -2146)
 rotation = 5.0632e-06
-scale = Vector2(2, 1.988)
+scale = Vector2(1.5, 1.5)
 
 [node name="EnemyArmed" parent="." instance=ExtResource("4_7ntxt")]
 position = Vector2(3493, -427)
-scale = Vector2(2, 1.995)
+scale = Vector2(1.5, 1.5)
 
 [node name="EnemyArmed3" parent="." instance=ExtResource("4_7ntxt")]
-position = Vector2(1140, -600.43)
+position = Vector2(1140, -604)
 rotation = 1.00978e-05
-scale = Vector2(2, 1.978)
+scale = Vector2(1.5, 1.5)
 
 [node name="HealthPickup" parent="." instance=ExtResource("4_6nni5")]
 position = Vector2(466, 166)
+
+[node name="Extract" parent="." instance=ExtResource("5_p628o")]
+position = Vector2(2357, -362)
+scale = Vector2(2, 2)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -816,5 +854,20 @@ slot_texture = ExtResource("6_lrybv")
 popup_menu = NodePath("../PopupMenu")
 
 [node name="PopupMenu" type="PopupMenu" parent="HUD"]
+
+[node name="ExtractLabel1" type="Label" parent="HUD"]
+visible = false
+offset_left = 691.0
+offset_top = 22.0
+offset_right = 769.0
+offset_bottom = 45.0
+text = "Extract in:"
+
+[node name="ExtractLabel2" type="Label" parent="HUD"]
+visible = false
+offset_left = 720.0
+offset_top = 45.0
+offset_right = 727.0
+offset_bottom = 68.0
 
 [connection signal="item_added" from="HUD/Inventory" to="HUD/InventoryGrid" method="_on_inventory_item_added"]

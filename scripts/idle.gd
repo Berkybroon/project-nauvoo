@@ -1,4 +1,4 @@
-extends "res://state.gd"
+extends "res://scripts/state.gd"
 
 @onready var idle_timer = $IdleTimer
 @onready var rotation_timer = $RotationTimer
@@ -27,7 +27,7 @@ func physics_update(delta):
 	rotate_while_idle(delta)
 	
 	if (owner as enemy).search_for_player_with_raycast():
-		state_machine.transition_to("Firing")
+		state_machine.transition_to(["Firing", "Chase"].pick_random())
 
 func rotate_while_idle(delta: float):
 	if is_rotating && allow_rotation:

@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://nr1y5wo1q48s"]
 
-[ext_resource type="Texture2D" uid="uid://fr0rhcklaa3s" path="res://base_playersprite.png" id="1_t08cg"]
-[ext_resource type="Script" path="res://player.gd" id="1_wjem8"]
-[ext_resource type="Texture2D" uid="uid://w02l068uqdgc" path="res://testprojectile.png" id="2_uj1it"]
-[ext_resource type="Texture2D" uid="uid://c1chriiv11n4l" path="res://base_wep.png" id="3_ngatw"]
-[ext_resource type="Texture2D" uid="uid://ct0g3c271022n" path="res://base_wep_fire.png" id="4_diiot"]
+[ext_resource type="Texture2D" uid="uid://fr0rhcklaa3s" path="res://sprites/characters/base_playersprite.png" id="1_t08cg"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_wjem8"]
+[ext_resource type="Texture2D" uid="uid://w02l068uqdgc" path="res://sprites/testprojectile.png" id="2_uj1it"]
+[ext_resource type="Texture2D" uid="uid://c1chriiv11n4l" path="res://sprites/base_wep.png" id="3_ngatw"]
+[ext_resource type="Texture2D" uid="uid://ct0g3c271022n" path="res://sprites/base_wep_fire.png" id="4_diiot"]
 
 [sub_resource type="GDScript" id="GDScript_mnies"]
 script/source = "extends Area2D

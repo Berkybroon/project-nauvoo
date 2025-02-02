@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://d2rhl6eergfcr"]
 
 [ext_resource type="Texture2D" uid="uid://xhml11u5araf" path="res://sprites/pickups/smoxe.png" id="1_i4cs0"]
-[ext_resource type="Script" path="res://item_base.gd" id="1_kxuwt"]
+[ext_resource type="Script" path="res://scripts/item_base.gd" id="1_kxuwt"]
 
 [resource]
 script = ExtResource("1_kxuwt")

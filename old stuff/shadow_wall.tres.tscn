@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn6xv7uahtq8t"]
 
-[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://blacktile.png" id="1_2erqw"]
+[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://sprites/blacktile.png" id="1_2erqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpsyl"]
 size = Vector2(64, 64)

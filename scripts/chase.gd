@@ -1,9 +1,10 @@
-extends "res://state.gd"
+extends "res://scripts/state.gd"
 
 @onready var navigation_agent_2d = $"../../NavigationAgent2D" as NavigationAgent2D
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var distance_to_stop_chasing = 100
+@onready var distance_to_stop_chasing = 300
 @onready var random_update_timer = $RandomUpdateTimer as RandomTimer
+@onready var self_position = $"../../".global_position
 
 # Begin chasing the player at declared speed immediately upon entering state.
 func enter(msg = {}) -> void:
@@ -12,28 +13,17 @@ func enter(msg = {}) -> void:
 		return
 	
 	owner.current_speed = owner.chasing_speed
-	start_chasing()
+	update_navigation_path()
 
-# Plot path to player and check if state should be exited. (called every frame)
+
 func _physics_process(delta: float) -> void:
 	
-	if navigation_agent_2d.is_navigation_finished():
-		
-		if try_to_stop_chasing():
-			stop_chasing()
-		
-		if player == null:
-			return
-		
-		var player_position = player.global_position
-		var navigation_point = NavigationServer2D.map_get_closest_point(navigation_agent_2d.get_navigation_map(), player_position)
-		
-		navigation_agent_2d.target_position = navigation_point
-	
+	self_position = $"../../".global_position
 	var next_position = navigation_agent_2d.get_next_path_position()
 	(owner as EnemyArmed).move_to_position(next_position)
+	
 
-# Should the enemy try to stop chasing the player? Called every frame in physics process method
+# Should the enemy try to stop chasing the player? Called on timer
 func try_to_stop_chasing() -> bool:
 	if player == null:
 		return true
@@ -59,9 +49,9 @@ func exit():
 func _on_random_update_timer_timeout() -> void:
 	if try_to_stop_chasing():
 		return
-	start_chasing()
+	update_navigation_path()
 
-func start_chasing():
+func update_navigation_path():
 	
 	if player == null:
 		return
@@ -70,5 +60,3 @@ func start_chasing():
 	var navigation_point = NavigationServer2D.map_get_closest_point(navigation_agent_2d.get_navigation_map(), player_position)
 	
 	navigation_agent_2d.target_position = navigation_point
-	random_update_timer.setup()
-	

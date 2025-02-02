@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://11nvrcip8wns"
-path="res://.godot/imported/spritesheet_tiles.png-e90c68c69a58218151bfebe0c51769bf.ctex"
+uid="uid://ba8gwd0swh56n"
+path="res://.godot/imported/enemysprite_ph.png-ccba1cb17d6f0a97e61e3861a39460eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spritesheet_tiles.png"
-dest_files=["res://.godot/imported/spritesheet_tiles.png-e90c68c69a58218151bfebe0c51769bf.ctex"]
+source_file="res://sprites/characters/enemysprite_ph.png"
+dest_files=["res://.godot/imported/enemysprite_ph.png-ccba1cb17d6f0a97e61e3861a39460eb.ctex"]
 
 [params]
 

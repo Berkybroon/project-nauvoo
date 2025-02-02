@@ -11,7 +11,7 @@ class_name Player
 @onready var ammo = max_ammo
 
 var last_fire_time: float = -fire_cooldown
-var bullet = preload("res://bullet.tscn")
+var bullet = preload("res://scenes/bullet.tscn")
 var bullet_speed = 4400
 
 # Called when the node enters the scene tree for the first time.
@@ -117,3 +117,9 @@ func take_damage(damage: int):
 func die():
 	print("ur dead")
 	queue_free()
+
+func update_extract_timer(time):
+	print(time)
+
+func extract():
+	print("extracted!")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://culpao00slow3"]
 
-[ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="1_8g5p0"]
-[ext_resource type="Script" path="res://health_pickup.gd" id="1_w4v7c"]
-[ext_resource type="Resource" uid="uid://c7o0h2ugotb0c" path="res://items/health_pack.tres" id="2_px1m6"]
+[ext_resource type="Script" path="res://scripts/health_pickup.gd" id="1_pyntl"]
+[ext_resource type="Resource" uid="uid://c7o0h2ugotb0c" path="res://items/health_pack.tres" id="2_x2nkb"]
+[ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="3_08nlm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2uia"]
 size = Vector2(64, 64)
@@ -15,11 +15,11 @@ collision_layer = 64
 collision_mask = 3
 gravity_scale = 0.0
 linear_damp = 5.0
-script = ExtResource("1_w4v7c")
-item_resource = ExtResource("2_px1m6")
+script = ExtResource("1_pyntl")
+item_resource = ExtResource("2_x2nkb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8g5p0")
+texture = ExtResource("3_08nlm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q2uia")

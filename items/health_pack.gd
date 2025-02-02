@@ -1,4 +1,4 @@
-extends "res://item_base.gd"
+extends "res://scripts/item_base.gd"
 
 func on_use(player: Player):
 	if player.health < 100:

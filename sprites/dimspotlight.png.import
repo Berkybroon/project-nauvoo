@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpfy3h0qvc7hp"
-path="res://.godot/imported/vision_light.png-0e040afdb3b7c1ffaea92872d4ce3240.ctex"
+uid="uid://bt4ng41q6rgjp"
+path="res://.godot/imported/dimspotlight.png-4c9ef855b49d99a2658c0c030fbd17c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vision_light.png"
-dest_files=["res://.godot/imported/vision_light.png-0e040afdb3b7c1ffaea92872d4ce3240.ctex"]
+source_file="res://sprites/dimspotlight.png"
+dest_files=["res://.godot/imported/dimspotlight.png-4c9ef855b49d99a2658c0c030fbd17c2.ctex"]
 
 [params]
 

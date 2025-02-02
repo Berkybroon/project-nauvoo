@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemBase" load_steps=4 format=3 uid="uid://c7o0h2ugotb0c"]
 
-[ext_resource type="Script" path="res://item_base.gd" id="1_il0wq"]
+[ext_resource type="Script" path="res://scripts/item_base.gd" id="1_il0wq"]
 [ext_resource type="Script" path="res://items/health_pack.gd" id="1_t2usq"]
 [ext_resource type="Texture2D" uid="uid://d12tjd2phddjy" path="res://sprites/pickups/medkit.png" id="1_wrivf"]
 

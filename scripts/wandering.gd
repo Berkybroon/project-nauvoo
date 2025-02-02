@@ -1,4 +1,4 @@
-extends "res://state.gd"
+extends "res://scripts/state.gd"
 
 @onready var navigation_agent_2d = $"../../NavigationAgent2D"
 var wandering_radius = 300

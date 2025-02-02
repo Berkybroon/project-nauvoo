@@ -1,4 +1,4 @@
-extends "res://state.gd"
+extends "res://scripts/state.gd"
 
 
 # Called when the node enters the scene tree for the first time.
