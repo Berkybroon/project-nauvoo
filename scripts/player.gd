@@ -122,5 +122,13 @@ func update_extract_timer(time):
 	print(time)
 
 func extract():
+	
+	# Send player inventory to global variables so they can be accessed by menus later
+	var inventory = $"../HUD/Inventory".get_items()
+	var inventory_slots = $"../HUD/Inventory".max_slots
+	global.set_inventory(inventory)
+	global.set_max_inventory_slots(inventory_slots)
+	
+	# Switch to post-raid summary
 	print("extracted!")
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/post_raid_summary.tscn")
