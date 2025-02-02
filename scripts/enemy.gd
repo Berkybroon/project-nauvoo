@@ -106,28 +106,6 @@ func generate_item_drops():
 		var instance = drop.instantiate()
 		instance.global_position = global_position
 		get_tree().get_current_scene().call_deferred("add_child", instance)
-		
-		# Make sure root node is a RigidBody2D
-		if instance is RigidBody2D:
-			print(instance)
-			instance.sleeping = false
-		
-			# Apply random push after ensuring it's in the tree
-			var random_angle = rng.randf() * TAU
-			var push_direction = Vector2(cos(random_angle), sin(random_angle))
-			var push_strength = 1000.0
-
-			# Use deferred call for impulse application
-			instance.call_deferred("apply_impulse", Vector2.ZERO, push_direction * push_strength)
-
-			# Debug: Check if the instance is in the tree. Remove later.
-			if not instance.is_inside_tree():
-				print("Instance is not properly added to the tree!")
-			else:
-				print("Instance added successfully.")
-			print("Linear velocity after impulse: ", instance.linear_velocity)
-			
-
 
 func remove_from_scene():
 	queue_free()

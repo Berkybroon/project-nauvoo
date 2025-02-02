@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1chriiv11n4l" path="res://sprites/base_wep.png" id="2_xqypx"]
 [ext_resource type="Texture2D" uid="uid://ct0g3c271022n" path="res://sprites/base_wep_fire.png" id="3_s8vju"]
 [ext_resource type="PackedScene" uid="uid://culpao00slow3" path="res://scenes/health_pickup.tscn" id="3_wa1s5"]
-[ext_resource type="PackedScene" uid="uid://cbvknjvv7ixyi" path="res://items/cigarettes.tscn" id="4_xcs75"]
+[ext_resource type="PackedScene" uid="uid://cbvknjvv7ixyi" path="res://scenes/cigarettes.tscn" id="4_xcs75"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="5_bxe5l"]
 [ext_resource type="Script" path="res://scripts/idle.gd" id="6_6gmxe"]
 [ext_resource type="Script" path="res://scripts/random_timer.gd" id="7_w5ptc"]
