@@ -22,3 +22,13 @@ offset_bottom = 306.0
 columns = 4
 script = ExtResource("2_g7t55")
 slot_texture = ExtResource("3_tcybp")
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 527.0
+offset_right = 857.0
+offset_bottom = 558.0
+text = "Main Menu"
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
