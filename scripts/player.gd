@@ -6,11 +6,15 @@ class_name Player
 @export var fire_cooldown: float = 0.1
 @export var max_health = 100
 @export var max_ammo = 30
+@export var max_stamina = 10.0
 
+@onready var stamina = max_stamina
 @onready var health = max_health
 @onready var ammo = max_ammo
+@onready var is_sprinting: bool = false
 
 var last_fire_time: float = -fire_cooldown
+
 var bullet = preload("res://scenes/bullet.tscn")
 var bullet_speed = 4400
 
@@ -19,7 +23,7 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	var input_vector = Vector2.ZERO # The player's movement vector.
 	var mouse_position = get_global_mouse_position()
@@ -66,6 +70,15 @@ func _physics_process(_delta: float) -> void:
 	 
 	if Input.is_action_just_released("sprint"):
 		stop_sprinting()
+	
+	# Sprinting / stamina logic
+	if is_sprinting:
+		stamina -= (delta * 3)
+	if !is_sprinting:
+		stamina += delta
+	if stamina <= 0:
+		stop_sprinting()
+
 
 func fire():
 	var current_time = Time.get_ticks_msec() / 1000.0
@@ -102,9 +115,11 @@ func reload():
 
 func start_sprinting():
 	speed = 1000
+	is_sprinting = true
 
 func stop_sprinting():
 	speed = 600
+	is_sprinting = false
 
 func bullet_impact():
 	take_damage(10)

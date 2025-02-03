@@ -37,6 +37,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	
 	if not push_applied:
 		set_deferred("sleeping", false)
+		
 		linear_velocity = push_vector / mass
 		push_applied = true  # Ensure it's only applied once
 	
