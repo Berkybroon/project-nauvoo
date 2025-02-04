@@ -2,56 +2,73 @@ extends "res://scripts/state.gd"
 
 @onready var idle_timer = $IdleTimer
 @onready var rotation_timer = $RotationTimer
+@onready var tween: Tween = null
 
-var rotation_speed: float
-var is_rotating = false
-var rotation_degrees: float = 0
-var allow_rotation = true
+var base_rotation: float = 0.0
+var target_rotation: float = 0.0
+var rotation_range: float = deg_to_rad(30) # ±30° max rotation range
+var rotating_left: bool = true # Keeps track of rotation direction
 
 func enter(msg = {}) -> void:
 	owner.velocity = Vector2.ZERO
-	rotation_speed = (owner as enemy).rotation_speed
-	idle_timer.setup()
-	allow_rotation = true
-	rotation_timer.setup()
-	
-func exit():
-	is_rotating = false
-	allow_rotation = false
+	base_rotation = normalize_angle(owner.rotation) # Lock in starting rotation
+	schedule_next_rotation()
+
+func exit() -> void:
+	if tween and tween.is_running():
+		tween.kill()
 	rotation_timer.stop()
 	idle_timer.stop()
-	
-func physics_update(delta):
-	if !is_rotating:
-		return
-	rotate_while_idle(delta)
-	
+
+func physics_update(_delta: float) -> void:
+	if not tween or not tween.is_running():
+		owner.rotation = target_rotation
+
 	if (owner as enemy).search_for_player_with_raycast():
 		state_machine.transition_to(["Firing", "Chase"].pick_random())
 
-func rotate_while_idle(delta: float):
-	if is_rotating && allow_rotation:
-		var rotation_angle = lerp_angle(deg_to_rad(owner.rotation_degrees), deg_to_rad(rotation_degrees), delta * rotation_speed)
-		owner.rotation = rotation_angle
-	
-	if absf(owner.rotation_degrees - rotation_degrees) < 1.0:
-		is_rotating = false
-		rotation_timer.setup()
-
 func _on_rotation_timer_timeout() -> void:
-	try_rotating()
+	schedule_next_rotation()
 
 func _on_idle_timer_timeout() -> void:
 	state_machine.transition_to("Wandering")
 	idle_timer.stop()
 
+func schedule_next_rotation() -> void:
+	if tween and tween.is_running():
+		return  # Prevents multiple rotations from stacking
 
-func try_rotating():
-	if !allow_rotation or is_rotating:
-		return
-	
-	start_rotating()
+	# Calculate the next rotation target, alternating left and right
+	var new_rotation = base_rotation + (-rotation_range if rotating_left else rotation_range)
+	target_rotation = normalize_angle(new_rotation)
+	rotating_left = !rotating_left  # Flip direction for the next cycle
 
-func start_rotating():
-	rotation_degrees = owner.rotation_degrees + randf_range(45, 300)
-	is_rotating = true
+	# Ensure the rotation happens in the correct direction (NO FLIPPING)
+	target_rotation = get_closest_rotation(owner.rotation, target_rotation)
+
+	# Smoothly animate rotation using Tween
+	tween = get_tree().create_tween()
+	tween.tween_property(owner, "rotation", target_rotation, 1.2) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_IN_OUT)
+
+	# After rotation completes, lock the rotation and schedule next move
+	tween.tween_callback(func():
+		owner.rotation = target_rotation
+		base_rotation = target_rotation  # Update base_rotation to the new target
+		rotation_timer.start(randf_range(1.5, 3.0))
+	)
+
+# Normalize angle to stay within -π to π (prevent unintended full turns)
+func normalize_angle(angle: float) -> float:
+	angle = fmod(angle, 2 * PI)  # Normalize to [0, 2π]
+	if angle > PI:
+		angle -= 2 * PI  # Convert to [-π, π]
+	elif angle < -PI:
+		angle += 2 * PI
+	return angle
+
+# Ensure the enemy rotates in the correct direction without flipping
+func get_closest_rotation(current_angle: float, target_angle: float) -> float:
+	var diff = normalize_angle(target_angle - current_angle)
+	return current_angle + diff
