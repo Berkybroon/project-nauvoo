@@ -39,7 +39,6 @@ func move_to_position(target_position: Vector2):
 	var motion = position.direction_to(target_position) * current_speed
 	navigation_agent_2d.set_velocity(motion)
 	look_at(target_position)
-	rotation -= deg_to_rad(180) # Corrects the enemy sprite walking backwards
 	velocity = motion
 	move_and_slide()
 

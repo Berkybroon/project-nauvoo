@@ -37,3 +37,5 @@ func fire():
 
 			# Add the bullet to the scene
 			get_tree().get_current_scene().add_child(bullet_instance)
+			
+			$WeaponSprite.play()

@@ -15,7 +15,6 @@ func update(_delta: float) -> void:
 	if player:
 		# Rotate the enemy to face the player
 		owner.look_at(player.global_position)
-		owner.rotation += deg_to_rad(180)
 		
 	owner.fire()
 	

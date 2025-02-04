@@ -6,7 +6,7 @@ class_name Player
 @export var fire_cooldown: float = 0.1
 @export var max_health = 100
 @export var max_ammo = 30
-@export var max_stamina = 10.0
+@export var max_stamina = 100.0
 
 @onready var stamina = max_stamina
 @onready var health = max_health
@@ -73,9 +73,9 @@ func _physics_process(delta: float) -> void:
 	
 	# Sprinting / stamina logic
 	if is_sprinting:
-		stamina -= (delta * 3)
+		stamina -= (delta * 20)
 	if !is_sprinting:
-		stamina += delta
+		stamina += (delta * 10)
 	if stamina <= 0:
 		stop_sprinting()
 

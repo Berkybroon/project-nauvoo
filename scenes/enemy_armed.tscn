@@ -32,7 +32,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"fire",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tcoqh"]
@@ -49,20 +49,22 @@ max_vision_distance = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0wake")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kd133")
 
 [node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-19, -12)
+position = Vector2(20, 9.99995)
 rotation = -1.5708
 scale = Vector2(0.28, 0.28)
 sprite_frames = SubResource("SpriteFrames_eu6h8")
 animation = &"fire"
+flip_h = true
 
 [node name="PlayerMuzzle" type="Marker2D" parent="WeaponSprite"]
-position = Vector2(0, -150)
-rotation = 4.71239
+position = Vector2(-0.000158548, 150)
+rotation = 1.5708
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("5_bxe5l")

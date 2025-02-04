@@ -970,4 +970,7 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_tmaxw")
 script = ExtResource("30_8k6c8")
 
+[node name="StaminaHideTimer" type="Timer" parent="HUD/StaminaIndicator"]
+one_shot = true
+
 [connection signal="item_added" from="HUD/Inventory" to="HUD/InventoryGrid" method="_on_inventory_item_added"]
