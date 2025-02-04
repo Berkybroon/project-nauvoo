@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	current_stamina = player.stamina
 	
 	if is_sprinting:
-		frame = round(current_stamina * 10) / 5
+		frame = round((current_stamina * 10) / 5)
 		show()
 	
 	if !is_sprinting:
