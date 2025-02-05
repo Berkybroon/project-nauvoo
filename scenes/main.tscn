@@ -922,6 +922,14 @@ position = Vector2(1140, -604)
 rotation = 1.00978e-05
 scale = Vector2(1.5, 1.5)
 
+[node name="EnemyArmed5" parent="." instance=ExtResource("4_7ntxt")]
+position = Vector2(4095, -1464)
+scale = Vector2(1.5, 1.5)
+
+[node name="EnemyArmed4" parent="." instance=ExtResource("4_7ntxt")]
+position = Vector2(3044, -1196)
+scale = Vector2(1.5, 1.5)
+
 [node name="HealthPickup" parent="." instance=ExtResource("4_6nni5")]
 position = Vector2(466, 166)
 

@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	# Sprinting / stamina logic
 	if is_sprinting:
 		stamina -= (delta * 20)
-	if !is_sprinting:
+	if !is_sprinting && stamina < 100:
 		stamina += (delta * 10)
 	if stamina <= 0:
 		stop_sprinting()
