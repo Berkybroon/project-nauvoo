@@ -1,13 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5uof40knvnm2"]
+[gd_scene load_steps=29 format=3 uid="uid://gpt6cyar055y"]
 
-[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_txwoi"]
-[ext_resource type="Script" path="res://scripts/inventory_grid.gd" id="2_yd2mk"]
-[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://sprites/blacktile.png" id="3_pmujx"]
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_23e6c"]
+[ext_resource type="Script" path="res://scripts/inventory_grid.gd" id="2_bda5n"]
+[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://sprites/blacktile.png" id="3_gk1c2"]
+[ext_resource type="Texture2D" uid="uid://nnssxfdx6v7j" path="res://sprites/staminabar/0.png" id="4_6fcvd"]
+[ext_resource type="Texture2D" uid="uid://ceag7yywcyqre" path="res://sprites/staminabar/5.png" id="5_siarc"]
+[ext_resource type="Texture2D" uid="uid://dqltn0sy1uil1" path="res://sprites/staminabar/10.png" id="6_nqrwb"]
+[ext_resource type="Texture2D" uid="uid://e1hd77gx70iu" path="res://sprites/staminabar/15.png" id="7_akw8g"]
+[ext_resource type="Texture2D" uid="uid://4p3481s640ol" path="res://sprites/staminabar/20.png" id="8_sqpk0"]
+[ext_resource type="Texture2D" uid="uid://blgrd6qv2owbq" path="res://sprites/staminabar/25.png" id="9_ljvmn"]
+[ext_resource type="Texture2D" uid="uid://d28bbg7lw0w0d" path="res://sprites/staminabar/30.png" id="10_jt6n6"]
+[ext_resource type="Texture2D" uid="uid://beky884evm340" path="res://sprites/staminabar/35.png" id="11_845br"]
+[ext_resource type="Texture2D" uid="uid://dre2ccjye6wlw" path="res://sprites/staminabar/40.png" id="12_ic0ju"]
+[ext_resource type="Texture2D" uid="uid://cxyi1hlna4kuf" path="res://sprites/staminabar/45.png" id="13_vihh2"]
+[ext_resource type="Texture2D" uid="uid://dm82eu1uvxsic" path="res://sprites/staminabar/50.png" id="14_1gpwa"]
+[ext_resource type="Texture2D" uid="uid://cg7cjrgk20kh4" path="res://sprites/staminabar/55.png" id="15_2hjoc"]
+[ext_resource type="Texture2D" uid="uid://0ujqobqkw3ti" path="res://sprites/staminabar/60.png" id="16_jnl7x"]
+[ext_resource type="Texture2D" uid="uid://b85akdehiptxi" path="res://sprites/staminabar/65.png" id="17_gimar"]
+[ext_resource type="Texture2D" uid="uid://ppqkukabivam" path="res://sprites/staminabar/70.png" id="18_ck7my"]
+[ext_resource type="Texture2D" uid="uid://dtdgb60xubgey" path="res://sprites/staminabar/75.png" id="19_fqocj"]
+[ext_resource type="Texture2D" uid="uid://ct24500jcv0lf" path="res://sprites/staminabar/80.png" id="20_ds6py"]
+[ext_resource type="Texture2D" uid="uid://2wj7ptobgv2" path="res://sprites/staminabar/85.png" id="21_6hrto"]
+[ext_resource type="Texture2D" uid="uid://cf5nika1eah6g" path="res://sprites/staminabar/90.png" id="22_hjant"]
+[ext_resource type="Texture2D" uid="uid://bf434ughbk48s" path="res://sprites/staminabar/95.png" id="23_fnftp"]
+[ext_resource type="Texture2D" uid="uid://hjdciflkru1n" path="res://sprites/staminabar/100.png" id="24_mvgih"]
+[ext_resource type="Script" path="res://scenes/stamina_indicator.gd" id="25_ee2tl"]
+[ext_resource type="PackedScene" uid="uid://bnagyjkv8f3nr" path="res://scenes/crosshair.tscn" id="26_ce5g5"]
+[ext_resource type="PackedScene" uid="uid://c70ojr5xfct4h" path="res://scenes/healthbar.tscn" id="27_kq6a0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmaxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6fcvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_siarc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nqrwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_akw8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sqpk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ljvmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jt6n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_845br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ic0ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vihh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1gpwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2hjoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jnl7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gimar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ck7my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fqocj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ds6py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6hrto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hjant")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_fnftp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_mvgih")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Inventory" type="Node" parent="."]
-script = ExtResource("1_txwoi")
+script = ExtResource("1_23e6c")
 max_slots = 12
 
 [node name="InventoryGrid" type="GridContainer" parent="." node_paths=PackedStringArray("inventory_manager", "popup_menu")]
@@ -16,20 +111,43 @@ offset_top = 548.0
 offset_right = 802.0
 offset_bottom = 1465.0
 columns = 4
-script = ExtResource("2_yd2mk")
+script = ExtResource("2_bda5n")
 inventory_manager = NodePath("../Inventory")
-slot_texture = ExtResource("3_pmujx")
+slot_texture = ExtResource("3_gk1c2")
 popup_menu = NodePath("../PopupMenu")
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
 auto_translate_mode = 1
 
-[node name="ExtractTimerDisplay" type="RichTextLabel" parent="."]
-offset_left = 680.0
-offset_top = 61.0
-offset_right = 826.0
-offset_bottom = 135.0
-text = "Extract In:
-"
+[node name="ExtractLabel1" type="Label" parent="."]
+visible = false
+offset_left = 691.0
+offset_top = 22.0
+offset_right = 769.0
+offset_bottom = 45.0
+text = "Extract in:"
+
+[node name="ExtractLabel2" type="Label" parent="."]
+visible = false
+offset_left = 720.0
+offset_top = 45.0
+offset_right = 727.0
+offset_bottom = 68.0
+
+[node name="StaminaIndicator" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1484, 803)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_tmaxw")
+script = ExtResource("25_ee2tl")
+
+[node name="StaminaHideTimer" type="Timer" parent="StaminaIndicator"]
+one_shot = true
+
+[node name="Crosshair" parent="." instance=ExtResource("26_ce5g5")]
+
+[node name="HealthBar" parent="." instance=ExtResource("27_kq6a0")]
+position = Vector2(800, 525)
+scale = Vector2(0.3, 0.3)
 
 [connection signal="item_added" from="Inventory" to="InventoryGrid" method="_on_inventory_item_added"]
