@@ -1,11 +1,35 @@
-[gd_scene load_steps=23 format=4 uid="uid://bwom6w76lvmpn"]
+[gd_scene load_steps=48 format=4 uid="uid://bwom6w76lvmpn"]
 
 [ext_resource type="Texture2D" uid="uid://11nvrcip8wns" path="res://sprites/spritesheet_tiles.png" id="1_lmfnk"]
 [ext_resource type="PackedScene" uid="uid://dsfu5v52im2w" path="res://scenes/player.tscn" id="1_oajdq"]
 [ext_resource type="PackedScene" uid="uid://culpao00slow3" path="res://scenes/health_pickup.tscn" id="4_6nni5"]
 [ext_resource type="PackedScene" uid="uid://dnj6mmjpjybtl" path="res://scenes/enemy_armed.tscn" id="4_7ntxt"]
 [ext_resource type="PackedScene" uid="uid://b405f0cgl2g5" path="res://scenes/extract.tscn" id="5_p628o"]
-[ext_resource type="PackedScene" uid="uid://gpt6cyar055y" path="res://scenes/hud.tscn" id="6_6smb2"]
+[ext_resource type="Script" path="res://scripts/inventory_grid.gd" id="5_rvwru"]
+[ext_resource type="Texture2D" uid="uid://dffndafp7svri" path="res://sprites/blacktile.png" id="6_lrybv"]
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="7_i5aok"]
+[ext_resource type="Texture2D" uid="uid://hjdciflkru1n" path="res://sprites/staminabar/100.png" id="9_bing4"]
+[ext_resource type="Texture2D" uid="uid://bf434ughbk48s" path="res://sprites/staminabar/95.png" id="10_0hml3"]
+[ext_resource type="Texture2D" uid="uid://cf5nika1eah6g" path="res://sprites/staminabar/90.png" id="11_v1wny"]
+[ext_resource type="Texture2D" uid="uid://2wj7ptobgv2" path="res://sprites/staminabar/85.png" id="12_878r2"]
+[ext_resource type="Texture2D" uid="uid://ct24500jcv0lf" path="res://sprites/staminabar/80.png" id="13_1uryf"]
+[ext_resource type="Texture2D" uid="uid://dtdgb60xubgey" path="res://sprites/staminabar/75.png" id="14_gtfof"]
+[ext_resource type="Texture2D" uid="uid://ppqkukabivam" path="res://sprites/staminabar/70.png" id="15_sy861"]
+[ext_resource type="Texture2D" uid="uid://b85akdehiptxi" path="res://sprites/staminabar/65.png" id="16_eu31m"]
+[ext_resource type="Texture2D" uid="uid://0ujqobqkw3ti" path="res://sprites/staminabar/60.png" id="17_mdftm"]
+[ext_resource type="Texture2D" uid="uid://cg7cjrgk20kh4" path="res://sprites/staminabar/55.png" id="18_ucinc"]
+[ext_resource type="Texture2D" uid="uid://dm82eu1uvxsic" path="res://sprites/staminabar/50.png" id="19_upci1"]
+[ext_resource type="Texture2D" uid="uid://cxyi1hlna4kuf" path="res://sprites/staminabar/45.png" id="20_pd7ki"]
+[ext_resource type="Texture2D" uid="uid://dre2ccjye6wlw" path="res://sprites/staminabar/40.png" id="21_sqbxj"]
+[ext_resource type="Texture2D" uid="uid://beky884evm340" path="res://sprites/staminabar/35.png" id="22_0qwrb"]
+[ext_resource type="Texture2D" uid="uid://d28bbg7lw0w0d" path="res://sprites/staminabar/30.png" id="23_34uk0"]
+[ext_resource type="Texture2D" uid="uid://blgrd6qv2owbq" path="res://sprites/staminabar/25.png" id="24_82t1f"]
+[ext_resource type="Texture2D" uid="uid://4p3481s640ol" path="res://sprites/staminabar/20.png" id="25_at3ob"]
+[ext_resource type="Texture2D" uid="uid://e1hd77gx70iu" path="res://sprites/staminabar/15.png" id="26_3mto6"]
+[ext_resource type="Texture2D" uid="uid://dqltn0sy1uil1" path="res://sprites/staminabar/10.png" id="27_518b0"]
+[ext_resource type="Texture2D" uid="uid://ceag7yywcyqre" path="res://sprites/staminabar/5.png" id="28_krjyu"]
+[ext_resource type="Texture2D" uid="uid://nnssxfdx6v7j" path="res://sprites/staminabar/0.png" id="29_2mxnk"]
+[ext_resource type="Script" path="res://scenes/stamina_indicator.gd" id="30_8k6c8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_suu8l"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -801,6 +825,77 @@ terrain_set_0/terrain_0/color = Color(0.29651, 0.898946, 0.385395, 1)
 navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_a1kd4")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmaxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_2mxnk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_krjyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_518b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_3mto6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_at3ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_82t1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_34uk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_0qwrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sqbxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_pd7ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_upci1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ucinc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_mdftm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_eu31m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sy861")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gtfof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1uryf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_878r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_v1wny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0hml3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bing4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="main" type="Node"]
 
 [node name="TileMap" type="TileMapLayer" parent="." groups=["tilemap"]]
@@ -842,4 +937,48 @@ position = Vector2(466, 166)
 position = Vector2(2357, -362)
 scale = Vector2(2, 2)
 
-[node name="HUD" parent="." instance=ExtResource("6_6smb2")]
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Inventory" type="Node" parent="HUD"]
+script = ExtResource("7_i5aok")
+max_slots = 12
+
+[node name="InventoryGrid" type="GridContainer" parent="HUD" node_paths=PackedStringArray("inventory_manager", "popup_menu")]
+offset_left = 29.0
+offset_top = 548.0
+offset_right = 802.0
+offset_bottom = 1465.0
+columns = 4
+script = ExtResource("5_rvwru")
+inventory_manager = NodePath("../Inventory")
+slot_texture = ExtResource("6_lrybv")
+popup_menu = NodePath("../PopupMenu")
+
+[node name="PopupMenu" type="PopupMenu" parent="HUD"]
+
+[node name="ExtractLabel1" type="Label" parent="HUD"]
+visible = false
+offset_left = 691.0
+offset_top = 22.0
+offset_right = 769.0
+offset_bottom = 45.0
+text = "Extract in:"
+
+[node name="ExtractLabel2" type="Label" parent="HUD"]
+visible = false
+offset_left = 720.0
+offset_top = 45.0
+offset_right = 727.0
+offset_bottom = 68.0
+
+[node name="StaminaIndicator" type="AnimatedSprite2D" parent="HUD"]
+visible = false
+position = Vector2(1484, 803)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_tmaxw")
+script = ExtResource("30_8k6c8")
+
+[node name="StaminaHideTimer" type="Timer" parent="HUD/StaminaIndicator"]
+one_shot = true
+
+[connection signal="item_added" from="HUD/Inventory" to="HUD/InventoryGrid" method="_on_inventory_item_added"]
