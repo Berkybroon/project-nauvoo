@@ -12,8 +12,8 @@ func _ready() -> void:
 		var button = TextureButton.new()
 		button.texture_normal = slot_texture
 		add_child(button)
-		
-		_update_inventory_display()
+	
+	_update_inventory_display()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

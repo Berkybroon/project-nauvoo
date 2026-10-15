@@ -9,10 +9,7 @@ class_name EnemyArmed
 var last_fire_time: float = -fire_cooldown
 
 func _ready():
-	var navigation_map = get_tree().get_first_node_in_group("tilemap").get_navigation_map()
-	NavigationServer2D.agent_set_map(navigation_agent_2d.get_rid(), navigation_map)
-	navigation_agent_2d.set_navigation_map(navigation_map)
-	current_speed = wandering_speed
+	super()
 	get_node("VisionRayCast2D").enabled = true
 
 func fire():
@@ -28,14 +25,15 @@ func fire():
 			var weapon_muzzle = get_node("WeaponSprite/PlayerMuzzle")
 			bullet_instance.global_position = weapon_muzzle.global_position
 
-					# Use the WeaponMuzzle's rotation to calculate the direction
+			# Use the WeaponMuzzle's rotation to calculate the direction
 			var direction = Vector2.RIGHT.rotated(weapon_muzzle.global_rotation)
 
 			# Align the bullet's velocity and rotation with the muzzle
+			bullet_instance.speed = bullet_speed
 			bullet_instance.linear_velocity = direction * bullet_speed
 			bullet_instance.rotation = weapon_muzzle.global_rotation
 
 			# Add the bullet to the scene
 			get_tree().get_current_scene().add_child(bullet_instance)
-			
+
 			$WeaponSprite.play()

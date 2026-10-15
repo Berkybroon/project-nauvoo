@@ -13,6 +13,7 @@ func enter(msg = {}) -> void:
 	owner.velocity = Vector2.ZERO
 	base_rotation = normalize_angle(owner.rotation) # Lock in starting rotation
 	schedule_next_rotation()
+	idle_timer.setup()
 
 func exit() -> void:
 	if tween and tween.is_running():
@@ -24,7 +25,7 @@ func physics_update(_delta: float) -> void:
 	if not tween or not tween.is_running():
 		owner.rotation = target_rotation
 
-	if (owner as enemy).search_for_player_with_raycast():
+	if (owner as Enemy).search_for_player_with_raycast():
 		state_machine.transition_to(["Firing", "Chase"].pick_random())
 
 func _on_rotation_timer_timeout() -> void:

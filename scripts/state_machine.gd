@@ -12,9 +12,9 @@ var state_name
 func _ready():
 	for child in (get_children() as Array[State]):
 		child.state_machine = self
-		
-		state.enter()
-		state_label.text = initial_state
+
+	state.enter()
+	state_label.text = str(initial_state)
 
 func _process (delta):
 	if state.has_method("update"):
@@ -23,7 +23,7 @@ func _process (delta):
 func _physics_process(delta):
 	if state.has_method("physics_update"):
 		state.physics_update(delta)
-		
+
 func transition_to(target_state_name: String, msg: Dictionary = {}):
 	if not has_node(target_state_name):
 		return

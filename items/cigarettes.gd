@@ -2,8 +2,9 @@ extends "res://scripts/item_base.gd"
 
 const item_scene_path = "res://scenes/cigarettes_pickup.tscn"
 
-func on_use(player: Player):
+func on_use(player: Player) -> bool:
 	print("puff puff")
+	return true
 
 func on_drop(player, main_scene):
 	var item_scene = load(item_scene_path).instantiate()

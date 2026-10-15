@@ -63,30 +63,32 @@ func _use_item(slot_index):
 	if item:
 		print("Using item:", item.name)
 		
+		var consumed = false
 		if item.item_script:
 			var script_instance = item.item_script.new() # Instance the item script so methods can be called.
 			if script_instance.has_method("on_use"):
-				script_instance.on_use($"../../Player") # Run use method on player node
+				consumed = script_instance.on_use($"../../Player") != false # Run use method on player node
 			else:
 				print("No on_use method found in the item script")
 		else:
 			print("No script assigned to the item")
 		
-		inventory_manager.remove_item(item)  # Optionally remove after use
-		_update_inventory_display()
+		# Only consume the item if its use actually happened
+		if consumed:
+			inventory_manager.remove_item(item) # Signal refreshes the display
 
 func _drop_item(slot_index):
 	
 	var item = inventory_manager.inventory[slot_index]
 	if item:
 		print("Dropping item:", item.name)
-		inventory_manager.remove_item(item)  # Remove from inventory
-		_update_inventory_display()
-	
-	if item.item_script:
+		inventory_manager.remove_item(item)  # Remove from inventory (signal refreshes the display)
+		
+		if item.item_script:
 			var script_instance = item.item_script.new() # Instance the item script so methods can be called.
 			if script_instance.has_method("on_drop"):
-				script_instance.on_drop($"../../Player", get_tree().get_root()) # Run drop method to player position and main scene
+				# Drop into the current scene so the pickup can find the HUD
+				script_instance.on_drop($"../../Player", get_tree().current_scene)
 
 func _update_inventory_display():
 	for i in range(get_child_count()):

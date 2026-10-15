@@ -5,7 +5,13 @@ var wandering_radius = 300
 
 var random_position_in_radius
 
+# Frames to wait after picking a target before trusting is_navigation_finished()
+# (the nav server needs a physics frame or two to compute the path).
+const PATH_GRACE_FRAMES := 3
+var frames_since_enter := 0
+
 func enter(msg = {}) -> void:
+	frames_since_enter = 0
 	move_to_next_random_location()
 
 func move_to_next_random_location():
@@ -13,11 +19,14 @@ func move_to_next_random_location():
 	navigation_agent_2d.target_position = random_position_in_radius
 
 func physics_update(_delta):
-	# Check if the target position is valid and reachable
-	if (owner as enemy).search_for_player_with_raycast():
-		state_machine.transition_to("Firing")
+	frames_since_enter += 1
 	
-	if navigation_agent_2d.target_position != Vector2.ZERO and (
+	if (owner as Enemy).search_for_player_with_raycast():
+		state_machine.transition_to("Firing")
+		return
+	
+	# Check if the target position is valid and reachable
+	if frames_since_enter > PATH_GRACE_FRAMES and navigation_agent_2d.target_position != Vector2.ZERO and (
 		navigation_agent_2d.is_navigation_finished() or 
 		!navigation_agent_2d.is_target_reachable()
 	):
@@ -25,7 +34,7 @@ func physics_update(_delta):
 	else:
 		# Continue moving towards the next navigation point
 		var next_position = navigation_agent_2d.get_next_path_position()
-		(owner as enemy).move_to_position(next_position)
+		(owner as Enemy).move_to_position(next_position)
 
 func get_random_position_in_radius(radius: float) -> Vector2:
 	# Get the global position of the owner
@@ -40,10 +49,3 @@ func get_random_position_in_radius(radius: float) -> Vector2:
 	# Return the navigable point
 	return navigation_point
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

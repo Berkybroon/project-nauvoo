@@ -10,8 +10,10 @@ class_name ItemBase
 
 
 # Override these methods in derived item scripts
-func on_use(_player):
+# Return true if the item was consumed.
+func on_use(_player) -> bool:
 	print(name, "used! (No behavior defined. Check script is assigned to tres.)")
+	return true
 
 func on_drop(player, main_scene):
 	print(name, "dropped! (No behavior defined. Check script is assigned to tres.)")

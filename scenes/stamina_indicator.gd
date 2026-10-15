@@ -11,12 +11,15 @@ var hide_delay: float = 1.5  # Delay in seconds (adjust as needed)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	if not is_instance_valid(player):
+		return
+	
 	is_sprinting = player.is_sprinting
 	current_stamina = player.stamina
 	
 	if is_sprinting:
 		# Player is sprinting: show the sprite and reset the timer
-		frame = round((current_stamina / 100) * 20)
+		frame = clampi(roundi((current_stamina / player.max_stamina) * 20), 0, 20)
 		show()
 		time_since_stopped_sprinting = 0.0  # Reset the counter
 	else:

@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 	if player_in_range:
 		if Input.is_action_just_pressed("interact"):
 			# Try to add to player inventory
-			if $"../HUD/Inventory".add_item(item_resource):
+			if get_tree().current_scene.get_node("HUD/Inventory").add_item(item_resource):
 				queue_free()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -47,20 +47,15 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		set_deferred("sleeping", false)
 		linear_velocity = push_vector / mass
 		push_applied = true  # Ensure it's only applied once
-	
-	# Check for collisions
-	for i in range(state.get_contact_count()):
-		var collider = state.get_contact_collider_object(i)
-
 
 # Signal when a body enters the detection area
 func _on_body_entered(body):
-	if body.name == "Player":
+	if body is Player:
 		$PickupPrompt.visible = true
 		player_in_range = true
 
 # Signal when a body exits the detection area
 func _on_body_exited(body):
-	if body.name == "Player":
+	if body is Player:
 		$PickupPrompt.visible = false
 		player_in_range = false

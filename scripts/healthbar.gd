@@ -17,5 +17,5 @@ func update_health_bar():
 	var health = parent_node.health
 	
 	# Choose sprite frame number 1-10 (closest int to a tenth of health %)
-	frame = round(health / 10)
+	frame = clampi(roundi(health / 10.0), 0, 10)
 	
